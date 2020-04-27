@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:team_null_dbms/pages/driver/driver_map.dart';
+import 'package:team_null_dbms/pages/driver/driver_nearby.dart';
 
 class DriverHomeScreen extends StatefulWidget {
   @override
@@ -11,9 +13,73 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
   String placeA = '';
   String placeB = '';
 
+  bool gotData = false;
+
+  int _currentTab = 0;
+  PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return gotData ?
+
+    Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text('Driver Home'),
+      ),
+      body: PageView(
+        controller: _pageController,
+        children: <Widget>[
+          DriverMap(),
+          DriverNearby(),
+        ],
+        onPageChanged: (int index) {
+          setState(() {
+            _currentTab = index;
+          });
+        },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentTab,
+        onTap: (int index) {
+          setState(() {
+            _currentTab = index;
+          });
+          _pageController.animateToPage(
+            index,
+            duration: Duration(milliseconds: 200),
+            curve: Curves.easeIn,
+          );
+        },
+        type: BottomNavigationBarType.fixed,
+        fixedColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.map,
+              size: 32,
+            ),
+            title: Text('Map'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.location_on,
+              size: 32,
+            ),
+            title: Text('Nearby'),
+          ),
+        ],
+      ),
+    )
+    
+    //if not got data then get data with this screen
+    : Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
