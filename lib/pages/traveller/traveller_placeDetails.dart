@@ -7,45 +7,47 @@ class TravellerPlaceDetails extends StatefulWidget {
 
 class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
 
-  final placeController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  String place = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 20),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Place: '),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      controller: placeController,
-                      decoration: InputDecoration(
-                        hintText: 'Enter place'
-                      ),
-                    ),
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal:50),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Enter Place',
+                  fillColor: Colors.white,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey[400], width: 2),
                   ),
-                ],
-              ),
-              SizedBox(height: 40),
-              RaisedButton(
-                onPressed: () {
-                  print(placeController.text);
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black, width: 2),
+                  ),
+                ),
+                onChanged: (val) {
+                  setState(() => place = val);
                 },
+              ),
+              SizedBox(height: 20),
+              RaisedButton(
+                color: Colors.black,
                 child: Text(
                   'Submit',
                   style: TextStyle(color: Colors.white),
-                  ),
+                ),
+                onPressed: () {},
                 elevation: 0,
-                color: Colors.black,
               ),
-          ],
+            ],
+          ),
         ),
       ),
     );

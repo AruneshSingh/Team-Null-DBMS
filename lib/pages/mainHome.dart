@@ -38,7 +38,9 @@ class MainHome extends StatelessWidget {
                         color: Colors.grey[400],
                       ),
 
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/driver_home');
+                      },
                     ),
                   ),
 
