@@ -41,6 +41,16 @@ class _PoliceChallanState extends State<PoliceChallan> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 20),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Please fill the following details to issue a challan for the driver',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: 'Driver ID',
