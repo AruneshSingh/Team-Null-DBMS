@@ -43,7 +43,7 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Time you have (in Hrs)',
+                  hintText: 'Time you have (in min)',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -94,7 +94,7 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Your current location',
+                  hintText: 'Your current location ID',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(

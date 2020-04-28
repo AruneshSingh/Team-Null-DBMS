@@ -68,9 +68,19 @@ class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 20),
+              Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Enter Place ID to get Reviews and Driver info',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
+              SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Enter Place',
+                  hintText: 'Enter Place ID',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(

@@ -104,7 +104,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Place A',
+                  hintText: 'Place A ID',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -121,7 +121,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Place B',
+                  hintText: 'Place B ID',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(

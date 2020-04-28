@@ -68,7 +68,7 @@ class _PoliceTimeInfoState extends State<PoliceTimeInfo> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Enter Time',
+                  hintText: 'Enter Time (0-24 Hrs)',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
