@@ -1,33 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'traveller_planTravel.dart';
-import 'traveller_placeDetails.dart';
-import 'traveller_friends.dart';
 import 'package:http/http.dart';
+import 'package:team_null_dbms/pages/police/police_friends.dart';
+import 'package:team_null_dbms/pages/police/police_info.dart';
+import 'package:team_null_dbms/pages/police/police_timeInfo.dart';
 
 
-class TravellerHomeScreen extends StatefulWidget {
+class PoliceHome extends StatefulWidget {
   @override
-  _TravellerHomeScreenState createState() => _TravellerHomeScreenState();
+  _PoliceHomeState createState() => _PoliceHomeState();
 }
 
-class _TravellerHomeScreenState extends State<TravellerHomeScreen> {
+class _PoliceHomeState extends State<PoliceHome> {
 
   int _currentTab = 0;
   PageController _pageController;
 
   final _formKey = GlobalKey<FormState>();
-  String traveller = '';
+  String officer = '';
 
   String url='';
-  var friendData;
+  var otherPoliceData;
 
   bool gotData = false;
 
   Future getData(url) async {
     Response response = await get(url);
-    friendData = response.body;
-    print(friendData);
+    return response.body;
   }
 
   @override
@@ -43,14 +41,14 @@ class _TravellerHomeScreenState extends State<TravellerHomeScreen> {
     Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Traveller Home'),
+        title: Text('Police Home'),
       ),
       body: PageView(
         controller: _pageController,
         children: <Widget>[
-          TravellerPlanTravel(),
-          TravellerPlaceDetails(),
-          TravellerFriends(friendData: friendData),
+          PoliceInfo(),
+          PoliceTimeInfo(),
+          PoliceFriends(friendData: otherPoliceData),
         ],
         onPageChanged: (int index) {
           setState(() {
@@ -75,17 +73,17 @@ class _TravellerHomeScreenState extends State<TravellerHomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.event_note,
+              Icons.info,
               size: 32,
             ),
-            title: Text('Plan'),
+            title: Text('Info'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
+              Icons.access_time,
               size: 32,
             ),
-            title: Text('Place Detail'),
+            title: Text('Time Info'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -113,7 +111,7 @@ class _TravellerHomeScreenState extends State<TravellerHomeScreen> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Person ID',
+                  hintText: 'Police ID',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -124,7 +122,7 @@ class _TravellerHomeScreenState extends State<TravellerHomeScreen> {
                   ),
                 ),
                 onChanged: (val) {
-                  setState(() => traveller = val);
+                  setState(() => officer = val);
                 },
               ),
               SizedBox(height: 20),
@@ -135,8 +133,10 @@ class _TravellerHomeScreenState extends State<TravellerHomeScreen> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  url="http://10.0.2.2:5000/query2?"+'num1=$traveller';
-                  await getData(url);
+                  url="http://10.0.2.2:5000/query5?"+'num1=$officer';
+                  otherPoliceData = await getData(url);
+                  print(otherPoliceData);
+
                   setState(() => gotData = true);
                 },
                 elevation: 0,

@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-
-class TravellerPlaceDetails extends StatefulWidget {
+class PoliceTimeInfo extends StatefulWidget {
   @override
-  _TravellerPlaceDetailsState createState() => _TravellerPlaceDetailsState();
+  _PoliceTimeInfoState createState() => _PoliceTimeInfoState();
 }
 
-class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
-
+class _PoliceTimeInfoState extends State<PoliceTimeInfo> {
   final _formKey = GlobalKey<FormState>();
-  String place = '';
+  String time = '';
 
   String url = '';
 
-  var placeData, driverData;
+  var leastCongestedData, mostCongestedData;
 
   bool gotData = false;
 
@@ -32,13 +30,13 @@ class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            Text('Reviews: '),
+            Text('Most Congested: '),
             SizedBox(height: 20),
-            Text(placeData),
+            Text(mostCongestedData),
             SizedBox(height: 40),
-            Text('Drivers that can pick you up: '),
+            Text('Least Congested: '),
             SizedBox(height: 20),
-            Text(driverData.split(":")[1])
+            Text(leastCongestedData)
           ],
         ),
       ),
@@ -54,7 +52,7 @@ class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Enter Place',
+                  hintText: 'Enter Time',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -65,7 +63,7 @@ class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
                   ),
                 ),
                 onChanged: (val) {
-                  setState(() => place = val);
+                  setState(() => time = val);
                 },
               ),
               SizedBox(height: 20),
@@ -76,15 +74,15 @@ class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  url="http://10.0.2.2:5000/query13?"+'num1=$place';
+                  url="http://10.0.2.2:5000/query15?"+'num1=$time';
                   print(url);
-                  placeData = await getData(url);
-                  print(placeData);
+                  mostCongestedData = await getData(url);
+                  print(mostCongestedData);
 
-                  url="http://10.0.2.2:5000/query18?"+'num1=$place';
+                  url="http://10.0.2.2:5000/query17?"+'num1=$time';
                   print(url);
-                  driverData = await getData(url);
-                  print(driverData);
+                  leastCongestedData = await getData(url);
+                  print(leastCongestedData);
 
                   setState(() => gotData = true);
                 },

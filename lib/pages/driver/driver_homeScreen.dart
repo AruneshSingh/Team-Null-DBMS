@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:team_null_dbms/pages/driver/driver_map.dart';
 import 'package:team_null_dbms/pages/driver/driver_nearby.dart';
+import 'package:http/http.dart';
+
 
 class DriverHomeScreen extends StatefulWidget {
   @override
@@ -13,10 +15,18 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
   String placeA = '';
   String placeB = '';
 
+  String url='';
+  var mapData, gasStationData, parkingData;
+
   bool gotData = false;
 
   int _currentTab = 0;
   PageController _pageController;
+
+  Future getData(url) async {
+    Response response = await get(url);
+    return response.body;
+  }
 
   @override
   void initState() {
@@ -36,8 +46,8 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
       body: PageView(
         controller: _pageController,
         children: <Widget>[
-          DriverMap(),
-          DriverNearby(),
+          DriverMap(mapData: mapData),
+          DriverNearby(gasStationData: gasStationData, parkingData: parkingData),
         ],
         onPageChanged: (int index) {
           setState(() {
@@ -132,7 +142,28 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                   'Submit',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  url="http://10.0.2.2:5000/query1?"+'num1=$placeA'+'&num2=$placeB';
+                  print(url);
+                  mapData = await getData(url);
+                  int x = mapData.length;
+                  mapData = mapData.substring(1,x-2);
+                  mapData = mapData.split(",");
+                  print(mapData);
+
+                  url="http://10.0.2.2:5000/query3?"+'num1=$placeA';
+                  print(url);
+                  gasStationData = await getData(url);
+                  print(gasStationData);
+
+                  url="http://10.0.2.2:5000/query4?"+'num1=$placeA';
+                  print(url);
+                  parkingData = await getData(url);
+                  print(parkingData);
+
+
+                  setState(() => gotData = true);
+                },
                 elevation: 0,
               ),
             ],

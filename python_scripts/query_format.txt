@@ -1,0 +1,155 @@
+Driver first query----> What is route from A to B?
+query1.py 
+
+Input:[2 numbers between 1-150]
+
+Enter source        -> 5
+Enter destination   -> 6
+
+Output:-[list of strings]
+
+['You are at 5', 'Turn left', 'Mall', 'Turn left', 'Juice vendor', 'Turn right', 'Bank', 'Turn right', 'You reached the destination 6']
+
+
+
+Travellers--> Where are my friends right now?
+query2.py 
+
+Input: [a number between 1-100]
+
+Enter person_ID        -> 5
+
+Output: [list of strings separated by comma (name,location)]
+
+['Antara,Aurangabad', 'Shesh ,Assam']
+
+
+
+
+Driver -->route for gas station from given station
+query3.py 
+
+Input: [a number between 1-150]
+Enter source        -> 4
+
+Output:[list of numbers]
+[4, 5, 6, 7, 8, 9, 10]
+
+
+
+
+Driver -->route for parking from given station
+query4.py 
+Input: [a number between 1-150]
+Enter source        -> 4
+
+Output:[list of numbers]
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41]
+
+
+
+
+Police--> Where are my fellow officers right now?
+query5.py 
+
+Input:[a number between 1-150]
+Enter officer_id        -> 50
+
+Output:[list of strings separated by comma(fellow_ID,Monument,location)]
+['12,Rani Ki Vav,Patan', '21,Purana Qila,Delhi', '14,Old City of Jerusalem,Israel']
+
+
+
+
+Traveller--> I have limited time/money/interest. What can I go in the city?
+query6.py
+Input: [time in minutes,money as int,category as string, current loctaion as int]
+Enter time in minutes        -> 3000
+Enter money   -> 3000
+Enter category    -> Temple
+Enter current location -> 3
+
+Output:[a string]
+Visit Akshardham Temple with place_ID 12
+Note:- lenght of lists is variable and can go beyond 50 also
+
+
+
+
+
+Policy Makers (To better plan and develop policies for the region)
+
+query7.py 
+What is the most common reason for challans?
+Input: Null
+Output: String (reason)
+Eg: Overspeeding
+
+
+query8.py
+Which road needs better surveillance?
+Input: Null
+Output: Number (road_ID)
+Eg: 2398
+
+
+query9.py
+What is the best road to improve street lighting?
+Input: Null
+Output: Number (road_ID)
+Eg: 2398
+
+
+
+query10.py
+What is the best road to improve road quality?
+Input: Null
+Output: Number (road_ID)
+Eg: 2398
+
+
+query11.py
+Which places are visited most frequently?
+Input: Null
+Output: String (place_name)
+Eg: Delhi
+
+
+query12.py
+How much revenue has been generated for the government?
+Input: Null
+Output: Number
+Eg: 2398
+
+
+query13.py-
+how is xyz place?
+input-place_id(int)
+output-reviews of the place(string) and type of place(string)
+
+query14.py-
+road with maximum accidents
+no input
+output- int road_id with maximum accidents
+
+query15.py-
+most congested place at xyz time
+input-time(int)
+output-the place_id which is most congested(int)
+
+query16.py-
+most challans
+no input
+output-the driver_id(int)
+
+query17.py-
+least congested place at xyz time
+input-time(int)
+output-the place_id which is least congested(int)
+
+query18.py-
+Can i get a ride to xyz place
+input-place_id(int)
+output-the driver_id of all the drivers that can pick you up(int)
+
+

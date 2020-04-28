@@ -119,7 +119,9 @@ class MainHome extends StatelessWidget {
                         size: 60.0,
                         color: Colors.grey[400],
                       ), 
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/police_home');
+                      },
                     ),
                   ),
                   SizedBox(height: 10.0),
@@ -153,7 +155,9 @@ class MainHome extends StatelessWidget {
                         size: 60.0,
                         color: Colors.grey[400],
                       ), 
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/govt_home');
+                      },
                     ),
                   ),
                   SizedBox(height: 10.0),
