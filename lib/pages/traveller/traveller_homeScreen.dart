@@ -27,7 +27,14 @@ class _TravellerHomeScreenState extends State<TravellerHomeScreen> {
   Future getData(url) async {
     Response response = await get(url);
     friendData = response.body;
-    print(friendData);
+    int x = friendData.length;
+    friendData = friendData.substring(1,x-2);
+    friendData = friendData.split("\",");
+    for (var i = 0; i < friendData.length; i++) {
+      friendData[i] = friendData[i].substring(1);
+    }
+    friendData[friendData.length - 1] = friendData[friendData.length - 1].substring(0,friendData[friendData.length - 1].length - 2);
+    print(friendData[0]);
   }
 
   @override

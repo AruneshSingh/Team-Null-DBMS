@@ -67,27 +67,75 @@ class _GovtHomeState extends State<GovtHome> {
         child: showData ? Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Text('What is the most common reason for challans?'),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'What is the most common reason for challans?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(query7),
             SizedBox(height: 20),
-            Text('Which road needs better surveillance?'),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Which road needs better surveillance?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(query8),
             SizedBox(height: 20),
-            Text('What is the best road to improve street lighting?'),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'What is the best road to improve street lighting?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(query9),
             SizedBox(height: 20),
-            Text('What is the best road to improve road quality?'),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'What is the best road to improve road quality?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(query10),
             SizedBox(height: 20),
-            Text('Which places are visited most frequently?'),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Which places are visited most frequently?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(query11),
             SizedBox(height: 20),
-            Text('How much revenue has been generated for the government?'),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'How much revenue has been generated for the government?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(query12),
             

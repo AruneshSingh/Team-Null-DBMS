@@ -16,13 +16,69 @@ class _DriverNearbyState extends State<DriverNearby> {
       padding: EdgeInsets.all(20),
       child: Column(
         children: <Widget>[
-          Text("Nearby Gas Stations: "),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              'Nearby Gas Stations: ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
           SizedBox(height: 10),
-          Text('${widget.gasStationData}'),
+          Expanded(
+            child: ListView.builder(
+
+              itemCount: widget.gasStationData.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: Text(widget.gasStationData[index].substring(1,widget.gasStationData[index].length - 1)),
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.grey[500]),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                  ),
+                  color: Colors.grey[200],
+                  elevation: 0,
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 20),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              'Nearby Parking Places: ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
           SizedBox(height: 10),
-          Text("Nearby Parking Places: "),
-          SizedBox(height: 10),
-          Text('${widget.parkingData}'),
+          Expanded(
+            child: ListView.builder(
+
+              itemCount: widget.parkingData.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: Text(widget.parkingData[index].substring(1,widget.parkingData[index].length - 1)),
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.grey[500]),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                  ),
+                  color: Colors.grey[200],
+                  elevation: 0,
+                );
+              },
+            ),
+          ),
+          // SizedBox(height: 10),
+          // Text('${widget.parkingData}'),
         ],
       )
     );

@@ -32,13 +32,29 @@ class _TravellerPlaceDetailsState extends State<TravellerPlaceDetails> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            Text('Reviews: '),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Reviews:',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(placeData),
             SizedBox(height: 40),
-            Text('Drivers that can pick you up: '),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Drivers that can pick you up:',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
-            Text(driverData.split(":")[1])
+            Text(driverData.substring(1,driverData.length-2)),
           ],
         ),
       ),

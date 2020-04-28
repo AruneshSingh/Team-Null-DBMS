@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:team_null_dbms/pages/police/police_challan.dart';
 import 'package:team_null_dbms/pages/police/police_friends.dart';
 import 'package:team_null_dbms/pages/police/police_info.dart';
 import 'package:team_null_dbms/pages/police/police_timeInfo.dart';
@@ -49,6 +50,7 @@ class _PoliceHomeState extends State<PoliceHome> {
           PoliceInfo(),
           PoliceTimeInfo(),
           PoliceFriends(friendData: otherPoliceData),
+          PoliceChallan(),
         ],
         onPageChanged: (int index) {
           setState(() {
@@ -91,6 +93,13 @@ class _PoliceHomeState extends State<PoliceHome> {
               size: 32,
             ),
             title: Text('Friends'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.note,
+              size: 32,
+            ),
+            title: Text('Challan'),
           ),
         ],
       ),
@@ -135,6 +144,13 @@ class _PoliceHomeState extends State<PoliceHome> {
                 onPressed: () async {
                   url="http://10.0.2.2:5000/query5?"+'num1=$officer';
                   otherPoliceData = await getData(url);
+                  int x = otherPoliceData.length;
+                  otherPoliceData = otherPoliceData.substring(1,x-2);
+                  otherPoliceData = otherPoliceData.split("\",");
+                  for (var i = 0; i < otherPoliceData.length; i++) {
+                    otherPoliceData[i] = otherPoliceData[i].substring(1);
+                  }
+                  otherPoliceData[otherPoliceData.length - 1] = otherPoliceData[otherPoliceData.length - 1].substring(0,otherPoliceData[otherPoliceData.length - 1].length - 2);
                   print(otherPoliceData);
 
                   setState(() => gotData = true);

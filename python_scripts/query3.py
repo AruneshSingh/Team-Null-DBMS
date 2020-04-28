@@ -20,7 +20,12 @@ def query(HOST,USER,PASSWORD,DATABASE,source):
     adjacency_list[i[0]].append(i[1])
     adjacency_list[i[1]].append(i[0])
 
-  return bfs(adjacency_list,source,available_gas_stations ,number_of_places)
+  place_name = {}
+  project.execute("Select place_Id,place_name from place")
+  for i in project:
+    place_name[i[0]]=i[1]
+  path = bfs(adjacency_list,source,available_gas_stations ,number_of_places)
+  return [place_name[i] for i in path]
 
 def bfs(adjacency_list,source,available_destinations,number_of_places):
   

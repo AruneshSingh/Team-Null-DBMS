@@ -30,13 +30,29 @@ class _PoliceTimeInfoState extends State<PoliceTimeInfo> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            Text('Most Congested: '),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Most Congested: ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
-            Text(mostCongestedData),
+            Text(mostCongestedData.substring(1,mostCongestedData.length-2)),
             SizedBox(height: 40),
-            Text('Least Congested: '),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Least Congested: ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
-            Text(leastCongestedData)
+            Text(leastCongestedData.substring(1,leastCongestedData.length-2))
           ],
         ),
       ),

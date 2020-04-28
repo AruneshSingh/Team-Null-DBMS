@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-class TravellerPlanTravel extends StatefulWidget {
+class PoliceChallan extends StatefulWidget {
+
   @override
-  _TravellerPlanTravelState createState() => _TravellerPlanTravelState();
+  _PoliceChallanState createState() => _PoliceChallanState();
 }
 
-class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
-
+class _PoliceChallanState extends State<PoliceChallan> {
   final _formKey = GlobalKey<FormState>();
-  String time = '';
+  String driverID = '';
   String money = '';
-  String interest = '';
-  String currentLocation = '';
+  String reason = '';
 
   String url = '';
 
-  var planTripData;
+  var challanData;
 
   bool gotData = false;
 
@@ -27,15 +26,16 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
 
   @override
   Widget build(BuildContext context) {
+
     return gotData ?
 
-    Scaffold(
-      body: Center(child: Text(planTripData.substring(1,planTripData.length-2))),
+    Container(
+      child: Center(child: Text(challanData)),
     )
-    
-    : Scaffold(
+
+        : Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal:50),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
         child: Form(
           key: _formKey,
           child: Column(
@@ -43,7 +43,7 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Time you have (in Hrs)',
+                  hintText: 'Driver ID',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -54,13 +54,13 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
                   ),
                 ),
                 onChanged: (val) {
-                  setState(() => time = val);
+                  setState(() => driverID = val);
                 },
               ),
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Money you have (in Rs)',
+                  hintText: 'Amount (in Rs)',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -77,7 +77,7 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
               SizedBox(height: 20),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Your interest',
+                  hintText: 'Reason',
                   fillColor: Colors.white,
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -88,26 +88,10 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
                   ),
                 ),
                 onChanged: (val) {
-                  setState(() => interest = val);
+                  setState(() => reason = val);
                 },
               ),
               SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Your current location',
-                  fillColor: Colors.white,
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey[400], width: 2),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 2),
-                  ),
-                ),
-                onChanged: (val) {
-                  setState(() => currentLocation = val);
-                },
-              ),
               SizedBox(height: 20),
               RaisedButton(
                 color: Colors.black,
@@ -116,10 +100,11 @@ class _TravellerPlanTravelState extends State<TravellerPlanTravel> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  url="http://10.0.2.2:5000/query6?"+'num1=$time'+'&num2=$money'+'&num3=$interest'+'&num4=$currentLocation';
+                  url = "http://10.0.2.2:5000/query19?" + 'num1=$driverID' +
+                      '&num2=$money' + '&num3=$reason' ;
                   print(url);
-                  planTripData = await getData(url);
-                  print(planTripData);
+                  challanData = await getData(url);
+                  print(challanData);
 
                   setState(() => gotData = true);
                 },

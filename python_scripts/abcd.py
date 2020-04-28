@@ -1,5 +1,5 @@
 from flask import Flask,request,jsonify
-import query1,query2,query3,query4,query5,query6, query7,query8,query9,query10,query11,query12,query13,query14,query15,query16,query17,query18
+import query1,query2,query3,query4,query5,query6, query7,query8,query9,query10,query11,query12,query13,query14,query15,query16,query17,query18, query19,query20
 app = Flask(__name__)
 
 @app.route('/query1', methods=['GET'])
@@ -141,5 +141,25 @@ def run18():
 	path=query18.query('37.59.55.185','OH7hLHUPZv','PCYgN41QXH','OH7hLHUPZv',int(d['num1']))
 	
 	return jsonify(path)
+
+@app.route('/query19', methods=['GET'])
+def run19():
+	d={}
+	d['num1']=str(request.args['num1'])
+	d['num2']=str(request.args['num2'])
+	d['num3']=str(request.args['num3'])
+
+	path=query19.query('37.59.55.185','OH7hLHUPZv','PCYgN41QXH','OH7hLHUPZv',int(d['num1']),int(d['num2']),str(d['num3']))
+	
+	return jsonify(path)
+
+@app.route('/query20', methods=['GET'])
+def run20():
+	d={}
+	d['num1']=str(request.args['num1'])
+	d['num2']=str(request.args['num2'])
+	path=query20.query('37.59.55.185','OH7hLHUPZv','PCYgN41QXH','OH7hLHUPZv',int(d['num1']),int(d['num2']))
+	print(jsonify(str(path)))
+	return jsonify(str(path))
 
 app.run()

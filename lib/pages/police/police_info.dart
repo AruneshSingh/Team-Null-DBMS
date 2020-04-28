@@ -42,13 +42,29 @@ class _PoliceInfoState extends State<PoliceInfo> {
         child: showData ? Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Text('Road with maximum accidents: '),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Road with maximum accidents: ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Text(accidentData),
             SizedBox(height: 20),
-            Text('Most Challans: '),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Most Challans: ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
             SizedBox(height: 20),
-            Text(challanData),
+            Text(challanData.substring(1,challanData.length - 2)),
             
           ],
         ) 

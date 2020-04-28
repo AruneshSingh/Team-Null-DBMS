@@ -16,7 +16,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
   String placeB = '';
 
   String url='';
-  var mapData, gasStationData, parkingData;
+  var mapData, gasStationData, parkingData,ambienceData;
 
   bool gotData = false;
 
@@ -46,7 +46,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
       body: PageView(
         controller: _pageController,
         children: <Widget>[
-          DriverMap(mapData: mapData),
+          DriverMap(mapData: mapData,ambienceData:ambienceData),
           DriverNearby(gasStationData: gasStationData, parkingData: parkingData),
         ],
         onPageChanged: (int index) {
@@ -154,12 +154,25 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                   url="http://10.0.2.2:5000/query3?"+'num1=$placeA';
                   print(url);
                   gasStationData = await getData(url);
+                  x = gasStationData.length;
+                  gasStationData = gasStationData.substring(1,x-2);
+                  gasStationData = gasStationData.split(",");
                   print(gasStationData);
 
                   url="http://10.0.2.2:5000/query4?"+'num1=$placeA';
                   print(url);
                   parkingData = await getData(url);
+                  x = parkingData.length;
+                  parkingData = parkingData.substring(1,x-2);
+                  parkingData = parkingData.split(",");
+                  print(parkingData[0]);
                   print(parkingData);
+
+
+                  url="http://10.0.2.2:5000/query20?"+'num1=$placeA'+'&num2=$placeB';
+                  print(url);
+                  ambienceData = await getData(url);
+                  print(ambienceData);
 
 
                   setState(() => gotData = true);
