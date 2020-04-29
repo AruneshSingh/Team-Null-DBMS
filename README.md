@@ -1,6 +1,5 @@
 # Team NULL DBMS Project
 
-A new Flutter project.
 
 ## Project Description
 
